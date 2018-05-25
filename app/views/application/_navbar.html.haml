@@ -1,0 +1,14 @@
+%nav.navbar.navbar-expand-sm.bg-light.navbar-light
+  = link_to 'Spectre Example', root_path, class: 'navbar-brand'
+
+  - if user_signed_in?
+    %ul.navbar-nav
+      %li.nav-item
+        Signed in as #{current_user.email}
+    %ul.navbar-nav
+      %li.nav-item
+        =link_to 'Edit profile', edit_user_registration_path, class: 'nav-link'
+
+  %ul.navbar-nav
+    %li.nav-item
+      = link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete
