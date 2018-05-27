@@ -1,3 +1,4 @@
+require 'tasks/create_customer'
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
@@ -10,9 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    Tasks::Customer.new.perform(User.last.id)
+  end
 
   # GET /resource/edit
   # def edit
