@@ -91,4 +91,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Write logs to a file
+  RAILS_DEFAULT_LOGGER = Logger.new('log/production.log')
 end
