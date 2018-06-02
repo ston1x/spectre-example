@@ -1,0 +1,37 @@
+.container
+  .row
+    .col-sm
+      .card{"style" => "18rem;"}
+        .card-body
+          %h5.card-title
+            Login
+          %h6.card-subtitle.mb-2.text-muted
+            customer_id: #{current_user.customer_id}
+            - if current_user.customer_id.nil?
+              = link_to 'create', create_customer_path(current_user), method: :post, class: 'card-link'
+          %p.card-text
+            The login resource represents a single connection of the client’s customer to a source of financial data – one of the providers.
+
+          = link_to 'Create', create_login_path(current_user), method: :post, class: 'card-link'
+          = link_to 'Refresh', '#', class: 'card-link'
+          %br
+          = link_to 'Reconnect', '#', class: 'card-link'
+          = link_to 'Destroy', '#', class: 'card-link'
+
+    .col-sm
+      .card{"style" => "18rem;"}
+        .card-body
+          %h5.card-title
+            Accounts
+          %p.card-text
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to 'Fetch', '#', class: 'card-link'
+
+    .col-sm
+      .card{"style" => "18rem;"}
+        .card-body
+          %h5.card-title
+            Transactions
+          %p.card-text
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to 'Fetch', '#', class: 'card-link'

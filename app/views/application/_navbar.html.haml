@@ -1,14 +1,23 @@
 %nav.navbar.navbar-expand-sm.bg-light.navbar-light
-  = link_to 'Spectre Example', root_path, class: 'navbar-brand'
-
-  - if user_signed_in?
-    %ul.navbar-nav
-      %li.nav-item
-        Signed in as #{current_user.email}
-    %ul.navbar-nav
-      %li.nav-item
-        =link_to 'Edit profile', edit_user_registration_path, class: 'nav-link'
-
   %ul.navbar-nav
     %li.nav-item
-      = link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete
+      = link_to 'Spectre Example', root_path, class: 'navbar-brand'
+  %button.navbar-toggler{"data-target" => "#collapsibleNavbar", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  .collapse.navbar-collapse{:id => 'collapsibleNavbar'}
+         
+    - if user_signed_in?
+      %ul.navbar-nav
+        %li.nav-item
+          = link_to 'Dashboard', dashboard_path, class: 'nav-link'
+
+      %ul.navbar-nav.ml-auto
+        %li.nav-item.text-muted
+          .nav-link
+            Signed in as #{current_user.email}
+
+        %li.nav-item
+          =link_to 'Edit profile', edit_user_registration_path, class: 'nav-link'
+
+        %li.nav-item
+          = link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete
