@@ -1,10 +1,15 @@
-%h1
-  Home page
-
 .row
   - unless user_signed_in?
     .col-sm
-      = link_to 'Login', new_user_session_path, class: 'btn btn-outline-success btn-fixed'
-      %br
-      %br
-      = link_to 'Sign up', new_user_registration_path, class: 'btn btn-outline-success btn-fixed'
+    .col-sm
+      .card
+        .card-body.text-center
+          %h4.card-title
+            Welcome
+
+          %p.card-text
+            = link_to 'Log in', new_user_session_path, class: 'btn btn-outline-success btn-fixed'
+            %br
+            %br
+            = link_to 'Sign up', new_user_registration_path, class: 'btn btn-outline-success btn-fixed'
+    .col-sm
