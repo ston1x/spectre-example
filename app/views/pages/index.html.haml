@@ -2,8 +2,9 @@
   Home page
 
 .row
-  .col-sm
-    = link_to 'Login', new_user_session_path, class: 'btn btn-outline-success btn-fixed'
-    %br
-    %br
-    = link_to 'Sign up', new_user_registration_path, class: 'btn btn-outline-success btn-fixed'
+  - unless user_signed_in?
+    .col-sm
+      = link_to 'Login', new_user_session_path, class: 'btn btn-outline-success btn-fixed'
+      %br
+      %br
+      = link_to 'Sign up', new_user_registration_path, class: 'btn btn-outline-success btn-fixed'
