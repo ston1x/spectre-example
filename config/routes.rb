@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     post 'create_login', to: 'pages#create_login', as: 'create_login'
     post 'save_login', to: 'pages#save_login', as: 'save_login'
     get 'accounts', to: 'pages#accounts', as: 'accounts'
+    get 'transactions', to: 'pages#transactions', as: 'transactions'
   end
 end
