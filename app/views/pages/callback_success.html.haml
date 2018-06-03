@@ -1,5 +1,5 @@
 %h1
   Success
-  
+
 %p
-= link_to 'Back to dashboard', dashboard_path
+= link_to 'Save login to database and proceed', save_login_path(current_user), method: :post, class: 'card-link'

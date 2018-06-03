@@ -9,14 +9,17 @@
             customer_id: #{current_user.customer_id}
             - if current_user.customer_id.nil?
               = link_to 'create', create_customer_path(current_user), method: :post, class: 'card-link'
+          %h6.card-subtitle.mb-2.text-muted
+            login: #{current_user.login_id}
+            - if current_user.login_id.nil?
+              = link_to 'create', create_login_path(current_user), method: :post, class: 'card-link'
           %p.card-text
             The login resource represents a single connection of the client’s customer to a source of financial data – one of the providers.
-
-          = link_to 'Create', create_login_path(current_user), method: :post, class: 'card-link'
-          = link_to 'Refresh', '#', class: 'card-link'
-          %br
-          = link_to 'Reconnect', '#', class: 'card-link'
-          = link_to 'Destroy', '#', class: 'card-link'
+          - if current_user.login_id.present?
+            = link_to 'Refresh', '#', class: 'card-link'
+            %br
+            = link_to 'Reconnect', '#', class: 'card-link'
+            = link_to 'Destroy', '#', class: 'card-link'
 
     .col-sm
       .card{"style" => "18rem;"}
