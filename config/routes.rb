@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post 'create_customer', to: 'pages#create_customer', as: 'create_customer'
     post 'create_login', to: 'pages#create_login', as: 'create_login'
     post 'save_login', to: 'pages#save_login', as: 'save_login'
+    get 'list_logins', to: 'pages#list_logins', as: 'list_logins'
     get 'accounts', to: 'pages#accounts', as: 'accounts'
     get 'transactions', to: 'pages#transactions', as: 'transactions'
   end

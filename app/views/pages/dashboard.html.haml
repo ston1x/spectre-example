@@ -16,6 +16,7 @@
           %p.card-text
             The login resource represents a single connection of the client’s customer to a source of financial data – one of the providers.
           - if current_user.login_id.present?
+            = link_to 'List all', list_logins_path, class: 'card-link'
             = link_to 'Refresh', '#', class: 'card-link'
             %br
             = link_to 'Reconnect', '#', class: 'card-link'
