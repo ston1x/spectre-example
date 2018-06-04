@@ -1,6 +1,5 @@
 require 'tasks/create_customer'
-require 'tasks/create_login'
-require 'tasks/save_login'
+require 'tasks/login'
 require 'tasks/account'
 require 'tasks/transaction'
 
@@ -26,6 +25,11 @@ class PagesController < ApplicationController
     def save_login
       Tasks::Login.new.save(current_user.id)
       redirect_to dashboard_path
+    end
+
+    def list_logins
+      user_logins = Tasks::Login.new.list_logins(current_user.id)
+      render json: user_logins
     end
 
     def accounts
