@@ -56,5 +56,14 @@ module Tasks
         puts 'An error has occured'
       end
     end
+
+    def reconnect(user_id, credentials)
+      begin
+        user = User.find(user_id)
+
+        reconnect = API.request(:put, "https://www.saltedge.com/api/v4/logins/#{user.login_id}/reconnect", {'data' => {'credentials' => credentials, 'override_credentials' => 'true'}})
+      rescue StandardError => e
+      end
+    end
   end
 end

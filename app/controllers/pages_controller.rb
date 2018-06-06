@@ -32,6 +32,18 @@ class PagesController < ApplicationController
       render json: user_logins
     end
 
+    def reconnect_login
+      credentials = {
+        'login' => params[:login], 
+        'password' => params[:password]}
+      
+      response = Tasks::Login.new.reconnect(current_user.id, credentials)
+      render json: response
+    end
+
+    def login_credentials
+    end
+
     def accounts
       user_accounts = Tasks::Account.new.fetch(current_user.id)
       render json: user_accounts
@@ -41,5 +53,4 @@ class PagesController < ApplicationController
       user_transactions = Tasks::Transaction.new.fetch(current_user.id)
       render json: user_transactions
     end
-
 end
