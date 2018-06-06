@@ -17,7 +17,7 @@
             The login resource represents a single connection of the client’s customer to a source of financial data – one of the providers.
           - if current_user.login_id.present?
             = link_to 'List', list_logins_path, class: 'card-link'
-            = link_to 'Refresh', '#', class: 'card-link'
+            = link_to 'Refresh', refresh_login_path, method: :put, class: 'card-link'
             = link_to 'Reconnect', login_credentials_path, class: 'card-link'
             = link_to 'Destroy', '#', class: 'card-link'
 

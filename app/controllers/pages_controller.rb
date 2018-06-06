@@ -44,6 +44,11 @@ class PagesController < ApplicationController
     def login_credentials
     end
 
+    def refresh_login
+      response = Tasks::Login.new.refresh(current_user.id)
+      render json: response
+    end
+
     def accounts
       user_accounts = Tasks::Account.new.fetch(current_user.id)
       render json: user_accounts
