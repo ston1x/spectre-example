@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'success' => 'pages#callback_success'
 
     resources :logins
+    resources :accounts
     post 'create_customer', to: 'pages#create_customer', as: 'create_customer'
     post 'create_login', to: 'logins#create_login', as: 'create_login'
     post 'save_login', to: 'logins#save_login', as: 'save_login'
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     put 'refresh_login', to: 'logins#refresh_login', as: 'refresh_login'
     get 'login_credentials', to: 'pages#login_credentials', as: 'login_credentials'
     delete 'remove_login', to: 'logins#remove_login', as: 'remove_login'
-    get 'accounts', to: 'pages#accounts', as: 'accounts'
+    get 'fetch_accounts', to: 'accounts#fetch', as: 'fetch_accounts'
     get 'transactions', to: 'pages#transactions', as: 'transactions'
   end
 end

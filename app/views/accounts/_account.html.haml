@@ -1,0 +1,14 @@
+%tr
+  %th{"scope" => "row"}
+    - account_id = account.account_id
+    = link_to account.account_id, account
+  %td
+    = account.name
+  %td
+    = account.balance
+  %td
+    = account.currency_code
+  %td
+    = account.nature
+  %td
+    = account.transactions_count

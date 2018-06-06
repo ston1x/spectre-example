@@ -15,6 +15,11 @@ class LoginsController < ApplicationController
     @logins = current_user.logins
   end
 
+  def show
+    @login = Login.find(params[:id])
+    @accounts = @login.accounts
+  end
+
   def list
     user_logins = Tasks::LoginTasks.new.list_logins(current_user.id)
     render json: user_logins

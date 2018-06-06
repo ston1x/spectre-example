@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 
 module Tasks
-  class Transaction
+  class TransactionTasks
     def fetch(user_id)
       begin
         puts "user_id: #{user_id}"

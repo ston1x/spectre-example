@@ -1,0 +1,27 @@
+.container
+  .row
+    .col
+      %h4
+        Accounts · login ##{@login.login_id}
+    .col.text-right
+      %p
+        = link_to 'Fetch', fetch_accounts_path(login_id: @login.login_id)
+
+  .row
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{'scope' => 'col'}
+            ID
+          %th{'scope' => 'col'}
+            Name
+          %th{'scope' => 'col'}
+            Balance
+          %th{'scope' => 'col'}
+            Currency
+          %th{'scope' => 'col'}
+            Nature
+          %th{'scope' => 'col'}
+            Transactions
+      %tbody
+        = render @accounts

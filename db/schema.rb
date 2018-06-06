@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_06_181918) do
+ActiveRecord::Schema.define(version: 2018_06_06_205037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 2018_06_06_181918) do
     t.bigint "login_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.float "balance"
+    t.string "currency_code"
+    t.string "nature"
+    t.integer "transactions_count"
     t.index ["login_id"], name: "index_accounts_on_login_id"
   end
 

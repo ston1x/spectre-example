@@ -1,6 +1,6 @@
 %tr
   %th{"scope" => "row"}
-    = login.login_id
+    = link_to login.login_id, login
   %td
     - user = User.find(login.user_id)
     = customer_id = user.customer_id
