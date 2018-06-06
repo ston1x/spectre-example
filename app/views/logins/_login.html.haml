@@ -1,0 +1,19 @@
+%tr
+  %th{"scope" => "row"}
+    = login.login_id
+  %td
+    - user = User.find(login.user_id)
+    = customer_id = user.customer_id
+  %td
+    = login.country_code
+  %td
+    = login.created_time
+  %td
+    = login.status
+  %td
+    - login_id = login.login_id
+    = link_to 'Reconnect', login_credentials_path(login_id: login_id)
+  %td
+    = link_to 'Refresh', refresh_login_path(login_id: login_id), method: :put
+  %td
+    = link_to 'Remove', remove_login_path(login_id: login_id), method: :delete

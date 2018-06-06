@@ -4,19 +4,20 @@
       .card{"style" => "18rem;"}
         .card-body
           %h5.card-title
-            Login
+            Logins
           %h6.card-subtitle.mb-2.text-muted
             customer_id: #{current_user.customer_id}
             - if current_user.customer_id.nil?
               = link_to 'create', create_customer_path(current_user), method: :post, class: 'card-link'
           %h6.card-subtitle.mb-2.text-muted
-            login: #{current_user.login_id}
-            - if current_user.login_id.nil?
+            - if current_user.logins.nil?
               = link_to 'create', create_login_path(current_user), method: :post, class: 'card-link'
+            - else
+              logins: #{current_user.logins.pluck('login_id')}
           %p.card-text
             The login resource represents a single connection of the client’s customer to a source of financial data – one of the providers.
-          - if current_user.login_id.present?
-            = link_to 'List', list_logins_path, class: 'card-link'
+          - if current_user.logins.any?
+            = link_to 'List', logins_path, class: 'card-link'
             = link_to 'Refresh', refresh_login_path, method: :put, class: 'card-link'
             = link_to 'Reconnect', login_credentials_path, class: 'card-link'
             = link_to 'Destroy', '#', class: 'card-link'

@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 
 module Tasks
-  class Login
+  class LoginTasks
     def perform(user_id)
       begin
         user = User.find(user_id)
@@ -38,9 +38,23 @@ module Tasks
         user = User.find(user_id)
         
         user_logins = list_logins(user_id)
-        user.login_id = user_logins['data'].last['id']
-        puts "login_id: #{user.login_id}"
-        user.save
+        'list_logins succeeded'
+        puts user_logins
+
+        login = Login.new
+        puts 'Login new'
+        login.user_id = user_id
+        puts login.user_id
+        login.login_id = user_logins['data'].last['id']
+        puts login.login_id
+        login.country_code = user_logins['data'].last['country_code']
+        puts login.country_code
+        login.created_time = user_logins['data'].last['created_at']
+        puts login.created_time
+        login.status = user_logins['data'].last['status']
+        
+        puts login
+        login.save
         puts 'Saved'
       rescue StandardError => e
         puts 'An error has occured'
@@ -54,27 +68,31 @@ module Tasks
         user_logins = JSON.parse user_logins.body
       rescue StandardError => e
         puts 'An error has occured'
+        puts "customer_id: #{user.customer_id}"
       end
     end
 
-    def reconnect(user_id, credentials)
+    def reconnect(login_id, credentials)
       begin
-        user = User.find(user_id)
-
-        reconnect = API.request(:put, "https://www.saltedge.com/api/v4/logins/#{user.login_id}/reconnect", {'data' => {'credentials' => credentials, 'override_credentials' => 'true'}})
+        reconnect = API.request(:put, "https://www.saltedge.com/api/v4/logins/#{login_id}/reconnect", {'data' => {'credentials' => credentials, 'override_credentials' => 'true'}})
       rescue StandardError => e
         puts 'An error has occured'
       end
     end
 
-    def refresh(user_id)
+    def refresh(login_id)
       begin
-        user = User.find(user_id)
-        if user.login_id.nil?
-          puts 'The user has no logins. Please create a login'
-        else
-          refresh = API.request(:put, "https://www.saltedge.com/api/v4/logins/#{user.login_id}/refresh")
-        end
+        refresh = API.request(:put, "https://www.saltedge.com/api/v4/logins/#{login_id}/refresh")
+      rescue StandardError => e
+        puts 'An error has occured'
+      end
+    end
+
+    def remove(login_id)
+      begin
+        login = Login.find(login_id)
+        API.request(:delete, "https://www.saltedge.com/api/v4/logins/#{login.login_id}")
+        
       rescue StandardError => e
         puts 'An error has occured'
       end

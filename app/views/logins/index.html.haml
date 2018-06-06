@@ -1,0 +1,28 @@
+.container
+  .row
+    .col
+      %h2
+        Logins
+    .col.text-right
+      %p
+        = link_to 'Create', create_login_path(current_user), method: :post
+
+  .row
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{'scope' => 'col'}
+            ID
+          %th{'scope' => 'col'}
+            customer_id
+          %th{'scope' => 'col'}
+            country_code
+          %th{'scope' => 'col'}
+            created_at
+          %th{'scope' => 'col'}
+            status
+          %th{'scope' => 'col'}
+          %th{'scope' => 'col'}
+          %th{'scope' => 'col'}
+      %tbody
+        = render @logins
