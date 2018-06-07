@@ -20,20 +20,20 @@
 5. Execute:
 
     `$ bundle install`
-    
-6. Start the Rails server:
+
+6. Set environment variables:
+    `APP_ID=my_app_id`
+    `SECRET=my_secret`
+    `PRIVATE_PEM_PATH=my_pem_path
+
+7. Start the Rails server:
 
     `$ rails server`
     
-7. Don't forget to create and migrate the db:
+8. Don't forget to create and migrate the db:
 
     `$ rails db:create`
     `$ rails db:migrate`
-
-8. Set environment variables:
-    `APP_ID=my_app_id`
-    `SECRET=my_secret`
-    `PRIVATE_PEM_PATH=my_pem_path`
 
 ## Usage
 1. Execute `$ rails server`
