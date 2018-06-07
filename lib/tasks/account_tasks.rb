@@ -8,7 +8,7 @@ module Tasks
       begin
         login = Login.find_by(login_id: login_id)
         # Destroy all existing accounts in the database to refresh them
-        login.accounts.destroy_all
+        login.accounts.destroy_all if login.accounts.any?
         response = API.request(:get, 'https://www.saltedge.com/api/v4/accounts', {'data' => {'login_id' => login_id}})
         accounts = JSON.parse response.body
         accounts = accounts['data']
@@ -26,6 +26,7 @@ module Tasks
           a.transactions_count = transactions_posted + transactions_pending
           puts 'Saving account'
           a.save
+          Tasks::TransactionTasks.new.fetch(a.id)
         end
       
       rescue StandardError => e

@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     get 'login_credentials', to: 'pages#login_credentials', as: 'login_credentials'
     delete 'remove_login', to: 'logins#remove_login', as: 'remove_login'
     get 'fetch_accounts', to: 'accounts#fetch', as: 'fetch_accounts'
-    get 'transactions', to: 'pages#transactions', as: 'transactions'
+    get 'fetch_transactions', to: 'transactions#fetch', as: 'fetch_transactions'
   end
 end

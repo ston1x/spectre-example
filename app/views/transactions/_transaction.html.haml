@@ -1,0 +1,13 @@
+%tr
+  %th{"scope" => "row"}
+    = transaction.transaction_id
+  %td
+    = transaction.made_on
+  %td
+    = transaction.status
+  %td
+    = transaction.category
+  %td
+    = transaction.description
+  %td
+    #{transaction.amount} #{transaction.currency_code}

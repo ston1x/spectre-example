@@ -1,0 +1,27 @@
+.container
+  .row
+    .col
+      %h4
+        Transactions · Account ##{@account.account_id}
+    .col.text-right
+      %p
+        = link_to 'Fetch', fetch_transactions_path(id: @account.id)
+
+  .row
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{'scope' => 'col'}
+            ID
+          %th{'scope' => 'col'}
+            Made on
+          %th{'scope' => 'col'}
+            Status
+          %th{'scope' => 'col'}
+            Category
+          %th{'scope' => 'col'}
+            Description
+          %th{'scope' => 'col'}
+            Amount
+      %tbody
+        = render @transactions
