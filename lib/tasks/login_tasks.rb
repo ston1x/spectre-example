@@ -7,7 +7,7 @@ module Tasks
     def perform(user_id)
       begin
         user = User.find(user_id)
-        return_url = 'https://spectreapp.herokuapp.com'
+        return_url = 'https://spectreapp.herokuapp.com/success'
         create(user, return_url)
 
       rescue StandardError => e
