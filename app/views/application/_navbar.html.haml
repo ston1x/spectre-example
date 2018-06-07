@@ -13,6 +13,12 @@
             = link_to 'Dashboard', dashboard_path, class: 'font-weight-bold text-muted'
           - else
             = link_to 'Dashboard', dashboard_path, class: 'nav-link'
+      %ul.navbar-nav  
+        %li.nav-item
+          - if current_page?(logins_path)
+            = link_to 'Logins', logins_path, class: 'font-weight-bold text-muted'
+          - else
+            = link_to 'Logins', logins_path, class: 'nav-link'
 
       %ul.navbar-nav.ml-auto
         %li.nav-item.text-muted
