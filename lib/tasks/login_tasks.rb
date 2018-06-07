@@ -90,9 +90,7 @@ module Tasks
 
     def remove(login_id)
       begin
-        login = Login.find(login_id)
-        API.request(:delete, "https://www.saltedge.com/api/v4/logins/#{login.login_id}")
-        
+        API.request(:delete, "https://www.saltedge.com/api/v4/logins/#{login_id}")
       rescue StandardError => e
         puts 'An error has occured'
       end
