@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   
-  root 'pages#index'
+  get 'home', to: 'pages#index', as: 'home'
   authenticated :user do
     get 'dashboard' => 'pages#dashboard'
+    root 'pages#dashboard'
     get 'success' => 'pages#callback_success'
 
     resources :logins
@@ -19,4 +20,5 @@ Rails.application.routes.draw do
     get 'fetch_accounts', to: 'accounts#fetch', as: 'fetch_accounts'
     get 'fetch_transactions', to: 'transactions#fetch', as: 'fetch_transactions'
   end
+  root 'pages#index'
 end
