@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
+1. Navigate to the directory where you want to store the app:
 
-Things you may want to cover:
+    `$ cd ~/dev`
+    
+2. Type:
 
-* Ruby version
+    `$ git init`
+    
+3. Clone this repository:
 
-* System dependencies
+    `https://github.com/ston1x/spectre-example.git`
+    
+4. Navigate to the repo directory:
 
-* Configuration
+    `$ cd spectre-example`
 
-* Database creation
+5. Execute:
 
-* Database initialization
+    `$ bundle install`
+    
+6. Start the Rails server:
 
-* How to run the test suite
+    `$ rails server`
+    
+7. Don't forget to create and migrate the db:
 
-* Services (job queues, cache servers, search engines, etc.)
+    `$ rails db:create`
+    `$ rails db:migrate`
 
-* Deployment instructions
+8. Set environment variables:
+    `APP_ID=my_app_id`
+    `SECRET=my_secret`
+    `PRIVATE_PEM_PATH=my_pem_path`
 
-* ...
+## Usage
+1. Execute `$ rails server`
+
+2. Go to `localhost:3000` in your web browser
+
+### Before you start the app
+Make sure you have installed:
+* Ruby 2.5.0 or later
+* Rails 5.2.0 or later
+* PostgreSQL
