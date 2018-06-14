@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   authenticated :user do
     get 'dashboard' => 'pages#dashboard'
     root 'pages#dashboard'
-    get 'success' => 'pages#callback_success'
+    get 'success' => 'logins#callback_success'
 
     resources :logins
     resources :accounts

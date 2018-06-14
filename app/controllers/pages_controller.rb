@@ -8,9 +8,6 @@ class PagesController < ApplicationController
     def dashboard
     end
 
-    def callback_success
-    end
-
     def create_customer
       Tasks::Customer.new.perform(current_user.id)
     end

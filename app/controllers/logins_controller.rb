@@ -8,6 +8,10 @@ class LoginsController < ApplicationController
 
   def save_login
     Tasks::LoginTasks.new.save(current_user.id)
+  end
+
+  def callback_success
+    save_login
     redirect_to dashboard_path
   end
 
