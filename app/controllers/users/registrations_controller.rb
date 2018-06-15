@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    Tasks::Customer.new.perform(User.last.id)
+    CreateCustomer.new(current_user.id).create
   end
 
   # GET /resource/edit
