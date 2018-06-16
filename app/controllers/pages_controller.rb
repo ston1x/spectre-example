@@ -1,4 +1,3 @@
-require 'tasks/create_customer'
 require 'tasks/transaction_tasks'
 
 class PagesController < ApplicationController
