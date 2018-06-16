@@ -2,7 +2,8 @@ require 'tasks/login_tasks'
 
 class LoginsController < ApplicationController
   def create_login
-    connect_url = Tasks::LoginTasks.new.perform(current_user.id)
+    user_id = current_user.id
+    connect_url = ConnectLogin.new(user_id).perform
     redirect_to connect_url
   end
 
@@ -11,8 +12,9 @@ class LoginsController < ApplicationController
   end
 
   def callback_success
-    save_login
-    redirect_to dashboard_path
+    render json: params
+    #save_login
+    #redirect_to dashboard_path
   end
 
   def index
