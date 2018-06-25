@@ -9,6 +9,6 @@ class ReconnectLogin
     @credentials = credentials
   end
   def perform
-    reconnect = API.request(:put, "https://www.saltedge.com/api/v4/logins/#{login_id}/reconnect", {'data' => {'credentials' => credentials, 'override_credentials' => 'true'}})
+    API.request(:put, "https://www.saltedge.com/api/v4/logins/#{login_id}/reconnect", {'data' => {'credentials' => credentials, 'override_credentials' => 'true'}})
   end
 end
