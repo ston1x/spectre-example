@@ -50,7 +50,8 @@ class LoginsController < ApplicationController
   end
 
   def remove_login
-    response = Tasks::LoginTasks.new.remove(params[:login_id])
+    remove_login_service = RemoveLogin.new(params[:login_id])
+    response = remove_login_service.perform
     Login.find_by(login_id: params[:login_id]).destroy
     redirect_to logins_path
   end
