@@ -36,7 +36,6 @@ class LoginsController < ApplicationController
       'password' => params[:password]}
       reconnect_login_service = ReconnectLogin.new(params[:login_id], credentials)
       response = reconnect_login_service.perform
-    #response = Tasks::LoginTasks.new.reconnect(params[:login_id], credentials)
     render json: response
   end
 
@@ -45,7 +44,8 @@ class LoginsController < ApplicationController
   end
 
   def refresh_login
-    response = Tasks::LoginTasks.new.refresh(params[:login_id])
+    refresh_login_service = RefreshLogin.new(params[:login_id])
+    response = refresh_login_service.perform
     render json: response
   end
 
