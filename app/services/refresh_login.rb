@@ -8,6 +8,6 @@ class RefreshLogin
   end
   
   def perform
-    API.request(:put, "https://www.saltedge.com/api/v4/logins/#{@login_id}/refresh") 
+    API.request(:put, "https://www.saltedge.com/api/v4/logins/#{@login_id}/refresh")
   end
 end

@@ -8,7 +8,7 @@ class LoginsController < ApplicationController
 
   def save_login
     save_login_service = SaveLogin.new(current_user.id)
-    save_login_service.perform  
+    save_login_service.perform
   end
 
   def callback_success
@@ -32,15 +32,15 @@ class LoginsController < ApplicationController
 
   def reconnect_login
     credentials = {
-      'login' => params[:login], 
-      'password' => params[:password]}
-      reconnect_login_service = ReconnectLogin.new(params[:login_id], credentials)
-      response = reconnect_login_service.perform
+      'login' => params[:login],
+      'password' => params[:password]
+    }
+    reconnect_login_service = ReconnectLogin.new(params[:login_id], credentials)
+    response = reconnect_login_service.perform
     render json: response
   end
 
   def login_credentials
-    login_id = params[:login_id]
   end
 
   def refresh_login
@@ -51,9 +51,8 @@ class LoginsController < ApplicationController
 
   def remove_login
     remove_login_service = RemoveLogin.new(params[:login_id])
-    response = remove_login_service.perform
+    remove_login_service.perform
     Login.find_by(login_id: params[:login_id]).destroy
     redirect_to logins_path
   end
-
 end
