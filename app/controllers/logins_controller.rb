@@ -1,14 +1,19 @@
 require 'tasks/login_tasks'
 
 class LoginsController < ApplicationController
-  def create_login
-    connect_url = ConnectLogin.new(current_user.id).perform
+  @@connect_login_service = ConnectLogin.new
+  @@save_login_service = SaveLogin.new
+  @@reconnect_login_service = ReconnectLogin.new
+  @@refresh_login_service = RefreshLogin.new
+  @@remove_login_service = RemoveLogin.new
+
+  def create_login  
+    connect_url = @@connect_login_service.perform(current_user.id)
     redirect_to connect_url
   end
 
   def save_login
-    save_login_service = SaveLogin.new(current_user.id)
-    save_login_service.perform
+    @@save_login_service.perform(current_user.id)
   end
 
   def callback_success
@@ -35,8 +40,7 @@ class LoginsController < ApplicationController
       'login' => params[:login],
       'password' => params[:password]
     }
-    reconnect_login_service = ReconnectLogin.new(params[:login_id], credentials)
-    response = reconnect_login_service.perform
+    response = @@reconnect_login_service.perform(params[:login_id], credentials)
     render json: response
   end
 
@@ -44,14 +48,12 @@ class LoginsController < ApplicationController
   end
 
   def refresh_login
-    refresh_login_service = RefreshLogin.new(params[:login_id])
-    response = refresh_login_service.perform
+    response = @@refresh_login_service.perform(params[:login_id])
     render json: response
   end
 
   def remove_login
-    remove_login_service = RemoveLogin.new(params[:login_id])
-    remove_login_service.perform
+    @@remove_login_service.perform(params[:login_id])
     Login.find_by(login_id: params[:login_id]).destroy
     redirect_to logins_path
   end

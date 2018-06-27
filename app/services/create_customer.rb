@@ -3,11 +3,8 @@ require 'json'
 require 'pry'
 
 class CreateCustomer
-  def initialize(params)
+  def perform(params)
     @user = User.find(params)
-  end
-
-  def perform
     create_customer
   end
 

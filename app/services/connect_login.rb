@@ -3,11 +3,8 @@ require 'json'
 require 'pry'
 
 class ConnectLogin
-  def initialize(params)
+  def perform(params)
     @user = User.find(params)
-  end
-
-  def perform
     @return_url = ENV['RETURN_URL']
     connect
   end

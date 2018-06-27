@@ -10,6 +10,7 @@ class FetchAccounts
     response = API.request(:get, 'https://www.saltedge.com/api/v4/accounts', {'data' => {'login_id' => login_id}})
     accounts = JSON.parse response.body
     accounts = accounts['data']
+    
     accounts.each do |account|
       a = Account.new
       a.account_id = account['id']

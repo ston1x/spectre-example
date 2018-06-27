@@ -3,11 +3,8 @@ require 'json'
 require 'pry'
 
 class SaveLogin
-  def initialize(user_id)
+  def perform(user_id)
     @user = User.find(user_id)
-  end
-
-  def perform
     user_logins = list_logins(@user.id)
     login = Login.new(
       user_id: @user.id,
