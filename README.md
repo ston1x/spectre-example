@@ -21,7 +21,8 @@
 
     `$ bundle install`
 
-6. Create .env file in the root of the project and set the environment variables according to the .env.dist file
+6. Create .env file in the root of the project and set the environment variables according to the .env.dist file:
+
     `$ cp .env.dist .env`
 
 7. Start the Rails server:
