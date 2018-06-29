@@ -21,10 +21,7 @@
 
     `$ bundle install`
 
-6. Set environment variables:
-    `APP_ID=my_app_id`
-    `SECRET=my_secret`
-    `PRIVATE_PEM_PATH=my_pem_path
+6. Create .env file in the root of the project and set the environment variables according to the .env.dist file
 
 7. Start the Rails server:
 
