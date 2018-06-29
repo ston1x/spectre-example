@@ -32,6 +32,7 @@
 8. Don't forget to create and migrate the db:
 
     `$ rails db:create`
+    
     `$ rails db:migrate`
 
 ## Usage
